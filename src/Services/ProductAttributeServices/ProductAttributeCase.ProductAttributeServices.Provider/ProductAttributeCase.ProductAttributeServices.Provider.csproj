@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\ProductAttributeCase.Core\ProductAttributeCase.Core.csproj" />
+    <ProjectReference Include="..\ProductAttributeCase.ProductAttributeServices.Model\ProductAttributeCase.ProductAttributeServices.Model.csproj" />
+  </ItemGroup>
+
+</Project>
