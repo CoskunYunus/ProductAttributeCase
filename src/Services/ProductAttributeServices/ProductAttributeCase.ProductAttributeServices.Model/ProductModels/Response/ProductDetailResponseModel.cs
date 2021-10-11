@@ -8,5 +8,23 @@ namespace ProductAttributeCase.ProductAttributeServices.Model.ProductModels.Resp
 {
     public class ProductDetailResponseModel
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public string CategoryName { get; set; }
+        public List<SubProductResponseModel> ProductAttributes { get; set; }
+    }
+
+    public class SubProductResponseModel
+    {
+        public List<ProductAttributeResponseModel> ProductAttributes { get; set; }
+
+    }
+    public class ProductAttributeResponseModel
+    {
+
+        public string AttributeName { get; set; }
+        public string OptionValue { get; set; }
+        public int OptionId { get; set; }
     }
 }

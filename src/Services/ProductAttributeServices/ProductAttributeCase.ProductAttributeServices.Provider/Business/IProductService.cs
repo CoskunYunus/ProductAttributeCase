@@ -12,8 +12,8 @@ namespace ProductAttributeCase.ProductAttributeServices.Provider.Business
 {
     public interface IProductService : IBaseService
     {
-        Task<BaseResponseModel<LinkedList<ProductDetailResponseModel>>> GetProduct(int key);
-        Task<BaseResponseModel<LinkedList<ProductListResponseModel>>> GetProduct(ProductListFilterRequestModel filter);
+        Task<BaseResponseModel<ProductDetailResponseModel>> GetProduct(int key);
+        Task<BaseResponseModel<List<ProductListResponseModel>>> GetProduct(ProductListFilterRequestModel filter);
         Task<BaseResponseModel> AddProduct(ProductAddRequestModel model);
         Task<BaseResponseModel> UpdateProduct(ProductAddRequestModel model);
         Task<BaseResponseModel> DeleteProduct(int key);
