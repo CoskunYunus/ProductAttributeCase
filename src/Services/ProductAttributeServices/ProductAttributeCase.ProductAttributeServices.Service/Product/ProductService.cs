@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ProductAttributeCase.Core;
 using ProductAttributeCase.ProductAttributeServices.Adaptor;
+using ProductAttributeCase.ProductAttributeServices.Model.Entity;
 using ProductAttributeCase.ProductAttributeServices.Model.ProductModels.Request;
 using ProductAttributeCase.ProductAttributeServices.Model.ProductModels.Response;
 using ProductAttributeCase.ProductAttributeServices.Provider.Business;
@@ -44,7 +45,23 @@ namespace ProductAttributeCase.ProductAttributeServices.Service.Product
 
         public Task<BaseResponseModel> AddProduct(ProductAddRequestModel model)
         {
-            throw new NotImplementedException();
+            var product = model.ToProduct();
+            _productRepo.Add(product);
+            var newSubProduct = new SubProduct
+            {
+                ProductId = product.Id,
+                IsDelete = false,
+                MetaTitle = "---",
+                Slug = "---",
+            };
+            _productRepo.AddSubProduct(newSubProduct);
+            var optionIds = model.ProductAttributes.Select(c => c.OptionId).ToList();
+            _productRepo.SetAttribute(newSubProduct.Id,optionIds);
+            return Task.FromResult(new BaseResponseModel
+            {
+                Result = true,
+                StatusCodes = StatusCodes.Ok
+            });
         }
 
         public Task<BaseResponseModel> UpdateProduct(ProductAddRequestModel model)

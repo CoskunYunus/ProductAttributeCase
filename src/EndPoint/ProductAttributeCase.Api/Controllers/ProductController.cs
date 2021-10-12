@@ -23,9 +23,9 @@ namespace ProductAttributeCase.Api.Controllers
         }
 
         [HttpGet("Get")]
-        public Task<BaseResponseModel<LinkedList<ProductDetailResponseModel>>> GetDetail(int key) => key > 0
+        public Task<BaseResponseModel<ProductDetailResponseModel>> GetDetail(int key) => key > 0
             ? _productService.GetProduct(key)
-            : Task.FromResult(new BaseResponseModel<LinkedList<ProductDetailResponseModel>>
+            : Task.FromResult(new BaseResponseModel<ProductDetailResponseModel>
             {
                 Message = "Is Not Validation",
                 Result = false,
@@ -33,7 +33,7 @@ namespace ProductAttributeCase.Api.Controllers
             });
 
         [HttpGet("GetAll")]
-        public Task<BaseResponseModel<LinkedList<ProductListResponseModel>>> GetAll(ProductListFilterRequestModel filter)
+        public Task<BaseResponseModel<List<ProductListResponseModel>>> GetAll(ProductListFilterRequestModel filter)
         {
             ///... is validaiton conroller
             return _productService.GetProduct(filter);

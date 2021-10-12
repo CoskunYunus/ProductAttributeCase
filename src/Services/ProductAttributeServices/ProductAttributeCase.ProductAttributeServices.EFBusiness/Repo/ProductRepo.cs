@@ -25,5 +25,28 @@ namespace ProductAttributeCase.ProductAttributeServices.EFBusiness.Repo
                 .Include(c => c.SubProducts)
                 .FirstOrDefault(c => c.IsDelete == false && c.Id == id);
         }
+
+        public void Add(Product product)
+        {
+            _context.Product.Add(product);
+            _context.Save();
+        }
+
+        public void AddSubProduct(SubProduct subProduct)
+        {
+            _context.SubProduct.Add(subProduct);
+            _context.Save();
+        }
+
+        public void SetAttribute(int subProductId, List<int> optionIds)
+        {
+            var addOptionsMapping = optionIds.Select(c => new SubProductAttributeOptionMapping
+            {
+                AttributeOptionId = c,
+                SubProductId = subProductId
+            }).ToList();
+            _context.SubProductAttributeOptionMapping.AddRange(addOptionsMapping);
+            _context.Save();
+        }
     }
 }

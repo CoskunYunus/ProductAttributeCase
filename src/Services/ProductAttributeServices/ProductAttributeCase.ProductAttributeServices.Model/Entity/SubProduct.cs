@@ -11,6 +11,8 @@ namespace ProductAttributeCase.ProductAttributeServices.Model.Entity
     {
         public string Slug { get; set; }
         public string MetaTitle { get; set; }
+        public int ProductId { get; set; }
+        public Product Product { get; set; }
        
         //
         //....

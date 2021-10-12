@@ -11,5 +11,8 @@ namespace ProductAttributeCase.ProductAttributeServices.Provider.Repo
     public interface IProductRepo: IBaseRepo
     {
         Product GetById(int id);
+        void Add(Product product);
+        void AddSubProduct(SubProduct subProduct);
+        void SetAttribute(int subProductId, List<int> optionIds);
     }
 }

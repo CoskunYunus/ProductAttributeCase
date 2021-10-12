@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ProductAttributeCase.ProductAttributeServices.Model.Entity;
+using ProductAttributeCase.ProductAttributeServices.Model.ProductModels.Request;
 using ProductAttributeCase.ProductAttributeServices.Model.ProductModels.Response;
 
 namespace ProductAttributeCase.ProductAttributeServices.Adaptor
@@ -28,6 +29,17 @@ namespace ProductAttributeCase.ProductAttributeServices.Adaptor
                     }).ToList()
 
                 }).ToList(),
+            };
+        }
+
+        public static Product ToProduct(this ProductAddRequestModel model)
+        {
+            return new Product
+            {
+                IsDelete = false,
+                Name = model.Name,
+                Price = model.Price,
+                ProductCategoryId = model.ProductCategoryId,
             };
         }
     }

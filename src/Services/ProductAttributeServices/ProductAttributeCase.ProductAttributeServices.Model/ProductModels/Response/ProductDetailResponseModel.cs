@@ -20,11 +20,5 @@ namespace ProductAttributeCase.ProductAttributeServices.Model.ProductModels.Resp
         public List<ProductAttributeResponseModel> ProductAttributes { get; set; }
 
     }
-    public class ProductAttributeResponseModel
-    {
-
-        public string AttributeName { get; set; }
-        public string OptionValue { get; set; }
-        public int OptionId { get; set; }
-    }
+  
 }
